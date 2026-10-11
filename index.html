@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МОЯ ЛЮБОВЬ? 💝</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Фоновые летающие элементы -->
+    <div class="floating-elements"></div>
+
+    <!-- Музыкальный плеер -->
+    <div id="musicControls" class="music-controls">
+        <button id="musicToggle" class="music-btn">🎵 Play Music</button>
+        <audio id="bgMusic" loop>
+            <source id="musicSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Основное окно с интерактивом -->
+    <div class="container">
+        <!-- Главный заголовок с именем -->
+        <h1 id="valentineTitle"></h1>
+        
+        <!-- Сцена 1: Вопрос "Любишь меня?" -->
+        <div id="question1" class="question-section">
+            <h2 id="question1Text"></h2>
+            <div class="button-group">
+                <button class="cute-btn" id="yesBtn1" onclick="showNextQuestion(2)">ДА</button>
+                <button class="cute-btn" id="noBtn1">НЕТ</button>
+            </div>
+            <!-- Скрытая кнопка подсказки в углу экрана -->
+            <div class="secret-answer">
+                <button class="cute-btn" id="secretAnswerBtn" onclick="showNextQuestion(2)"></button>
+            </div>
+        </div>
+
+        <!-- Сцена 2: Ползунок любви (Love Meter) -->
+        <div id="question2" class="question-section hidden">
+            <h2 id="question2Text"></h2>
+            <div class="love-meter">
+                <p>
+                    <span id="startText"></span> 
+                    <span class="love-value-container">(<span id="loveValue">100</span>%)</span>
+                </p>
+                <input type="range" min="1" max="10000" value="100" class="slider" id="loveMeter">
+                <span id="extraLove" class="hidden"></span>
+            </div>
+            <button class="cute-btn" id="nextBtn" onclick="showNextQuestion(3)">Дальше ❤️</button>
+        </div>
+
+        <!-- Сцена 3: Главный вопрос про август 2025 -->
+        <div id="question3" class="question-section hidden">
+            <h2 id="question3Text"></h2>
+            <div class="button-group">
+                <button class="cute-btn" id="yesBtn3" onclick="celebrate()">Да!</button>
+                <button class="cute-btn" id="noBtn3">Нет</button>
+            </div>
+        </div>
+
+        <!-- Сцена 4: Экран поздравления при победе -->
+        <div id="celebration" class="question-section hidden">
+            <h1 id="celebrationTitle" class="celebration-text"></h1>
+            <p id="celebrationMessage" style="font-size: 1.2rem; margin: 15px 0; font-weight: 300;"></p>
+            <div id="celebrationEmojis" class="hearts-explosion"></div>
+        </div>
+    </div>
+
+    
+    <script src="config.js"></script>
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
