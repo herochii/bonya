@@ -79,7 +79,7 @@ const CONFIG = {
     music: {
         enabled: true,                     
         autoplay: true,                    
-        musicUrl: "music/bg-music.mp3", 
+        musicUrl: "bg-music.mp3", 
         startText: "🎵",        // Просто эмодзи ноты для компактной круглой кнопки
         stopText: "🔇",         // Эмодзи выключения звука
         volume: 0.5                        
