@@ -204,7 +204,7 @@ function createHeartExplosion() {
     }
 }
 
-// Background Music Stream Setup
+// Background Music Setup
 function setupMusicPlayer() {
     const musicControls = document.getElementById('musicControls');
     const musicToggle = document.getElementById('musicToggle');
@@ -222,24 +222,28 @@ function setupMusicPlayer() {
     bgMusic.volume = config.music.volume || 0.5;
     bgMusic.load();
 
-    musicToggle.textContent = config.music.startText || "🎵 Play Music";
+    // ИСПРАВЛЕНО: подставляем короткую иконку
+    musicToggle.textContent = config.music.startText || "🎵";
 
     musicToggle.addEventListener('click', () => {
         if (bgMusic.paused) {
             bgMusic.play();
-            musicToggle.textContent = config.music.stopText || "🔇 Stop Music";
+            musicToggle.textContent = config.music.stopText || "🔇";
+            musicToggle.classList.add('playing'); // Включаем пульсацию круга
         } else {
             bgMusic.pause();
-            musicToggle.textContent = config.music.startText || "🎵 Play Music";
+            musicToggle.textContent = config.music.startText || "🎵";
+            musicToggle.classList.remove('playing'); // Выключаем пульсацию
         }
     });
 
     if (config.music.autoplay) {
         const auto = () => {
             bgMusic.play().then(() => {
-                musicToggle.textContent = config.music.stopText || "🔇 Stop Music";
+                musicToggle.textContent = config.music.stopText || "🔇";
+                musicToggle.classList.add('playing');
                 document.body.removeEventListener('click', auto);
-            }).catch(() => console.log("User gesture required for audio..."));
+            }).catch(() => console.log("Awaiting user click for audio..."));
         };
         document.body.addEventListener('click', auto);
     }
